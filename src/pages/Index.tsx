@@ -9,35 +9,6 @@ const NAV_ITEMS = [
   { id: "donate", label: "Проходка" },
 ];
 
-const DONATE_TIERS = [
-  {
-    name: "Деревянный",
-    emoji: "🪵",
-    price: "149 ₽",
-    border: "#A07340",
-    highlight: "#C4955A",
-    perks: ["Приставка [Дерево]", "Доступ к /kit wood", "10 бонусных блоков"],
-    featured: false,
-  },
-  {
-    name: "Золотой",
-    emoji: "⭐",
-    price: "399 ₽",
-    border: "#A07800",
-    highlight: "#FFD700",
-    perks: ["Приставка [Золото]", "Доступ к /fly", "Приоритетный вход", "50 бонусных блоков"],
-    featured: true,
-  },
-  {
-    name: "Алмазный",
-    emoji: "💎",
-    price: "799 ₽",
-    border: "#00A0A0",
-    highlight: "#44F3F3",
-    perks: ["Приставка [Алмаз]", "Доступ к /god", "Личный варп", "Уникальный скин меча", "200 бонусных блоков"],
-    featured: false,
-  },
-];
 
 const CONTACTS = [
   { icon: "MessageCircle", label: "Discord", value: "discord.gg/smp", color: "#5865F2" },
@@ -245,74 +216,16 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ===== DONATE ===== */}
+      {/* ===== FREE VIBE ===== */}
       <section id="donate" className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-4">
-            <div className="inline-block mc-panel px-4 py-1 mb-4">
-              <span className="font-pixel text-yellow-400 text-[9px]">💰 ПОДДЕРЖИ СЕРВЕР</span>
-            </div>
-            <h2 className="font-pixel text-mc-green text-xl md:text-2xl pixel-text-shadow mb-3">
-              Проходка
+        <div className="max-w-xl mx-auto text-center">
+          <div className="mc-panel p-10 animate-fade-in opacity-0-init">
+            <div className="text-5xl mb-6">🎮</div>
+            <h2 className="font-pixel text-mc-green text-lg md:text-xl pixel-text-shadow mb-6 leading-relaxed">
+              Сервер бесплатный<br />до следующего вайба
             </h2>
-            <p className="font-body text-muted-foreground max-w-lg mx-auto">
-              Каждая донация помогает нам поддерживать сервер и добавлять новый контент. Получи уникальные привилегии!
-            </p>
-          </div>
-
-          <div className="text-center mb-10">
-            <span className="font-pixel text-[9px] text-mc-stone-light bg-mc-stone-dark/30 px-3 py-1 inline-block">
-              ✓ БЕЗ PAY-TO-WIN — только косметика и удобство
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {DONATE_TIERS.map((tier, i) => (
-              <div
-                key={i}
-                className={`mc-panel p-6 animate-fade-in opacity-0-init relative ${tier.featured ? "ring-2 ring-yellow-500/60" : ""}`}
-                style={{ animationDelay: `${i * 150}ms` }}
-              >
-                {tier.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="font-pixel text-[8px] bg-yellow-500 text-black px-3 py-1 whitespace-nowrap">
-                      ★ ПОПУЛЯРНОЕ
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-4xl mb-4 text-center">{tier.emoji}</div>
-                <h3 className="font-pixel text-center text-[12px] mb-2 pixel-text-shadow" style={{ color: tier.highlight }}>
-                  {tier.name}
-                </h3>
-
-                <div className="text-center mb-6">
-                  <span className="font-pixel text-3xl" style={{ color: tier.highlight, textShadow: "2px 2px 0 rgba(0,0,0,0.6)" }}>
-                    {tier.price}
-                  </span>
-                  <span className="font-body text-muted-foreground text-xs block">/ навсегда</span>
-                </div>
-
-                <ul className="space-y-2 mb-6">
-                  {tier.perks.map((perk, j) => (
-                    <li key={j} className="font-body text-sm text-foreground/80 flex items-start gap-2">
-                      <span style={{ color: tier.highlight }} className="mt-0.5">▶</span>
-                      {perk}
-                    </li>
-                  ))}
-                </ul>
-
-                <button className={tier.featured ? "mc-btn-gold w-full py-3 text-[10px]" : "mc-btn w-full py-3 text-[10px]"}>
-                  КУПИТЬ ПРОХОДКУ
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10 mc-panel p-5 max-w-xl mx-auto">
             <p className="font-body text-muted-foreground text-sm">
-              💳 Принимаем оплату через банковские карты, СБП и криптовалюту.<br />
-              Проходка активируется автоматически в течение 5 минут.
+              Заходи, играй, строй — ничего платить не нужно.
             </p>
           </div>
         </div>
