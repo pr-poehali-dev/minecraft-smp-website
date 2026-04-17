@@ -5,8 +5,8 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/a420a709-61bd-49c2-81c3-092f2
 
 const NAV_ITEMS = [
   { id: "home", label: "Главное" },
-  { id: "contact", label: "Связь" },
   { id: "apply", label: "Заявка" },
+  { id: "contact", label: "Связь" },
   { id: "donate", label: "Проходка" },
 ];
 
@@ -176,69 +176,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ===== CONTACT ===== */}
-      <section id="contact" className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-mc-sky-dark/50 to-transparent pointer-events-none" />
-        <div className="max-w-3xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="font-pixel text-mc-green text-xl md:text-2xl pixel-text-shadow mb-3">
-              📡 Связь
-            </h2>
-            <p className="font-body text-muted-foreground">Есть вопросы? Мы всегда на связи</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-            {CONTACTS.map((c, i) => (
-              c.href ? (
-                <a
-                  key={i}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init cursor-pointer hover:scale-105 transition-transform block"
-                  style={{ animationDelay: `${i * 150}ms` }}
-                >
-                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
-                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
-                  </div>
-                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
-                  <div className="font-body text-foreground text-sm">{c.value}</div>
-                </a>
-              ) : (
-                <div
-                  key={i}
-                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init"
-                  style={{ animationDelay: `${i * 150}ms` }}
-                >
-                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
-                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
-                  </div>
-                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
-                  <div className="font-body text-foreground text-sm">{c.value}</div>
-                </div>
-              )
-            ))}
-          </div>
-
-          <div className="mc-panel p-6">
-            <h3 className="font-pixel text-mc-green text-[11px] mb-5 pixel-text-shadow">✉ Написать нам</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В ИГРЕ</label>
-                <input className="mc-input" placeholder="Steve123" />
-              </div>
-              <div>
-                <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В DISCORD</label>
-                <input className="mc-input" placeholder="username#0000" />
-              </div>
-              <button className="mc-btn px-6 py-3 text-[10px] w-full">
-                ОТПРАВИТЬ
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== APPLY ===== */}
       <section id="apply" className="py-20 px-4">
         <div className="max-w-md mx-auto">
@@ -287,6 +224,52 @@ export default function Index() {
                 </button>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CONTACT ===== */}
+      <section id="contact" className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-mc-sky-dark/50 to-transparent pointer-events-none" />
+        <div className="max-w-xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="font-pixel text-mc-green text-xl md:text-2xl pixel-text-shadow mb-3">
+              📡 Связь
+            </h2>
+            <p className="font-body text-muted-foreground">Есть вопросы? Мы всегда на связи</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {CONTACTS.map((c, i) => (
+              c.href ? (
+                <a
+                  key={i}
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init cursor-pointer hover:scale-105 transition-transform block"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
+                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
+                  </div>
+                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
+                  <div className="font-body text-foreground text-sm">{c.value}</div>
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
+                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
+                  </div>
+                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
+                  <div className="font-body text-foreground text-sm">{c.value}</div>
+                </div>
+              )
+            ))}
           </div>
         </div>
       </section>
