@@ -123,7 +123,7 @@ export default function Index() {
             Выживай. Строй. Исследуй.
           </p>
           <p className="font-body text-muted-foreground text-base mb-10 animate-fade-in animate-delay-300 opacity-0-init max-w-xl mx-auto">
-            Дружелюбный SMP-сервер с активным сообществом, уникальными квестами и честной игрой без pay-to-win.
+            SMP-сервер с активным сообществом, уникальными квестами и честной игрой без pay-to-win.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in animate-delay-400 opacity-0-init">
@@ -161,7 +161,7 @@ export default function Index() {
           <p className="font-body text-muted-foreground">Особенности нашего сервера</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
           {FEATURES.map((feat, i) => (
             <div
               key={i}
@@ -314,9 +314,6 @@ export default function Index() {
             <span className="font-pixel text-mc-green text-sm pixel-text-shadow">SMP</span>
             <div className="w-6 h-6 mc-block grass-top" />
           </div>
-          <p className="font-body text-muted-foreground text-sm mb-2">
-            Сервер работает с 2024 года · d1.rustix.me:25212
-          </p>
           <p className="font-pixel text-[8px] text-muted-foreground/50">
             НЕ ОФИЦИАЛЬНЫЙ ПРОДУКТ MOJANG
           </p>
