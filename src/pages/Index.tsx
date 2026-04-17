@@ -12,7 +12,6 @@ const NAV_ITEMS = [
 
 const CONTACTS = [
   { icon: "MessageCircle", label: "Discord", value: "discord.gg/smp", color: "#5865F2" },
-  { icon: "Send", label: "Telegram", value: "@smp_server", color: "#2AABEE" },
   { icon: "Globe", label: "IP Сервера", value: "d1.rustix.me:25212", color: "#5AAB1E" },
 ];
 
