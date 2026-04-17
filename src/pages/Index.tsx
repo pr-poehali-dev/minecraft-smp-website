@@ -11,8 +11,8 @@ const NAV_ITEMS = [
 
 
 const CONTACTS = [
-  { icon: "MessageCircle", label: "Discord", value: "discord.gg/smp", color: "#5865F2" },
-  { icon: "Globe", label: "IP Сервера", value: "d1.rustix.me:25212", color: "#5AAB1E" },
+  { icon: "MessageCircle", label: "Discord", value: "discord.gg/7th6RNKD", href: "https://discord.gg/7th6RNKD", color: "#5865F2" },
+  { icon: "Globe", label: "IP Сервера", value: "d1.rustix.me:25212", href: null, color: "#5AAB1E" },
 ];
 
 const FEATURES = [
@@ -167,44 +167,52 @@ export default function Index() {
             <p className="font-body text-muted-foreground">Есть вопросы? Мы всегда на связи</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
             {CONTACTS.map((c, i) => (
-              <div
-                key={i}
-                className="mc-panel p-6 text-center animate-fade-in opacity-0-init cursor-pointer hover:scale-105 transition-transform"
-                style={{ animationDelay: `${i * 150}ms` }}
-              >
-                <div
-                  className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center"
-                  style={{ backgroundColor: c.color + "33" }}
+              c.href ? (
+                <a
+                  key={i}
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init cursor-pointer hover:scale-105 transition-transform block"
+                  style={{ animationDelay: `${i * 150}ms` }}
                 >
-                  <Icon name={c.icon} size={22} style={{ color: c.color }} />
+                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
+                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
+                  </div>
+                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
+                  <div className="font-body text-foreground text-sm">{c.value}</div>
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className="mc-panel p-6 text-center animate-fade-in opacity-0-init"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 mc-block flex items-center justify-center" style={{ backgroundColor: c.color + "33" }}>
+                    <Icon name={c.icon} size={22} style={{ color: c.color }} />
+                  </div>
+                  <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
+                  <div className="font-body text-foreground text-sm">{c.value}</div>
                 </div>
-                <div className="font-pixel text-[9px] mb-2" style={{ color: c.color }}>{c.label}</div>
-                <div className="font-body text-foreground text-sm">{c.value}</div>
-              </div>
+              )
             ))}
           </div>
 
           <div className="mc-panel p-6">
             <h3 className="font-pixel text-mc-green text-[11px] mb-5 pixel-text-shadow">✉ Написать нам</h3>
             <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В ИГРЕ</label>
-                  <input className="mc-input" placeholder="Steve123" />
-                </div>
-                <div>
-                  <label className="font-pixel text-[9px] text-muted-foreground block mb-2">КОНТАКТ</label>
-                  <input className="mc-input" placeholder="@username или email" />
-                </div>
+              <div>
+                <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В ИГРЕ</label>
+                <input className="mc-input" placeholder="Steve123" />
               </div>
               <div>
-                <label className="font-pixel text-[9px] text-muted-foreground block mb-2">СООБЩЕНИЕ</label>
-                <textarea className="mc-input min-h-[100px] resize-none" placeholder="Ваш вопрос..." />
+                <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В DISCORD</label>
+                <input className="mc-input" placeholder="username#0000" />
               </div>
               <button className="mc-btn px-6 py-3 text-[10px] w-full">
-                ОТПРАВИТЬ СООБЩЕНИЕ
+                ОТПРАВИТЬ
               </button>
             </div>
           </div>
