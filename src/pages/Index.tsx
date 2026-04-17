@@ -6,8 +6,11 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/a420a709-61bd-49c2-81c3-092f2
 const NAV_ITEMS = [
   { id: "home", label: "Главное" },
   { id: "contact", label: "Связь" },
+  { id: "apply", label: "Заявка" },
   { id: "donate", label: "Проходка" },
 ];
+
+const WEBHOOK_URL = "https://functions.poehali.dev/f32e57e7-dbc8-4f2b-8f97-38b23c42aa16";
 
 
 const CONTACTS = [
@@ -23,6 +26,23 @@ const FEATURES = [
 export default function Index() {
   const [activeSection, setActiveSection] = useState("home");
   const [copiedIp, setCopiedIp] = useState(false);
+  const [appNick, setAppNick] = useState("");
+  const [appStatus, setAppStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const sendApplication = async () => {
+    if (!appNick.trim()) return;
+    setAppStatus("loading");
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname: appNick.trim() }),
+      });
+      setAppStatus(res.ok ? "success" : "error");
+    } catch {
+      setAppStatus("error");
+    }
+  };
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -215,6 +235,58 @@ export default function Index() {
                 ОТПРАВИТЬ
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== APPLY ===== */}
+      <section id="apply" className="py-20 px-4">
+        <div className="max-w-md mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="font-pixel text-mc-green text-xl md:text-2xl pixel-text-shadow mb-3">
+              📋 Заявка
+            </h2>
+            <p className="font-body text-muted-foreground">Оставь свой ник — мы тебя ждём</p>
+          </div>
+
+          <div className="mc-panel p-8">
+            {appStatus === "success" ? (
+              <div className="text-center py-6">
+                <div className="text-5xl mb-4">✅</div>
+                <p className="font-pixel text-mc-green text-[11px] pixel-text-shadow mb-3">ЗАЯВКА ОТПРАВЛЕНА!</p>
+                <p className="font-body text-muted-foreground text-sm mb-6">Ждём тебя на сервере, {appNick}!</p>
+                <button
+                  onClick={() => { setAppStatus("idle"); setAppNick(""); }}
+                  className="mc-btn px-6 py-3 text-[10px]"
+                >
+                  ОТПРАВИТЬ ЕЩЁ
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-5">
+                <div>
+                  <label className="font-pixel text-[9px] text-muted-foreground block mb-2">НИК В ИГРЕ</label>
+                  <input
+                    className="mc-input"
+                    placeholder="Steve123"
+                    value={appNick}
+                    onChange={(e) => setAppNick(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && sendApplication()}
+                    disabled={appStatus === "loading"}
+                  />
+                </div>
+                {appStatus === "error" && (
+                  <p className="font-pixel text-[9px] text-red-400">ОШИБКА. ПОПРОБУЙ ЕЩЁ РАЗ.</p>
+                )}
+                <button
+                  onClick={sendApplication}
+                  disabled={!appNick.trim() || appStatus === "loading"}
+                  className="mc-btn px-6 py-3 text-[10px] w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {appStatus === "loading" ? "ОТПРАВЛЯЕМ..." : "ПОДАТЬ ЗАЯВКУ"}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
