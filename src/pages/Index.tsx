@@ -42,7 +42,7 @@ const DONATE_TIERS = [
 const CONTACTS = [
   { icon: "MessageCircle", label: "Discord", value: "discord.gg/smp", color: "#5865F2" },
   { icon: "Send", label: "Telegram", value: "@smp_server", color: "#2AABEE" },
-  { icon: "Globe", label: "IP Сервера", value: "play.smp.ru", color: "#5AAB1E" },
+  { icon: "Globe", label: "IP Сервера", value: "d1.rustix.me:25212", color: "#5AAB1E" },
 ];
 
 const FEATURES = [
@@ -65,7 +65,7 @@ export default function Index() {
   };
 
   const copyIp = () => {
-    navigator.clipboard.writeText("play.smp.ru");
+    navigator.clipboard.writeText("d1.rustix.me:25212");
     setCopiedIp(true);
     setTimeout(() => setCopiedIp(false), 2000);
   };
@@ -146,7 +146,7 @@ export default function Index() {
               className="mc-btn px-6 py-3 text-[10px] flex items-center gap-2 min-w-[200px] justify-center"
             >
               <Icon name={copiedIp ? "Check" : "Copy"} size={14} />
-              {copiedIp ? "СКОПИРОВАНО!" : "play.smp.ru"}
+              {copiedIp ? "СКОПИРОВАНО!" : "d1.rustix.me:25212"}
             </button>
             <button
               onClick={() => scrollTo("donate")}
@@ -327,7 +327,7 @@ export default function Index() {
             <div className="w-6 h-6 mc-block grass-top" />
           </div>
           <p className="font-body text-muted-foreground text-sm mb-2">
-            Сервер работает с 2024 года · play.smp.ru
+            Сервер работает с 2024 года · d1.rustix.me:25212
           </p>
           <p className="font-pixel text-[8px] text-muted-foreground/50">
             НЕ ОФИЦИАЛЬНЫЙ ПРОДУКТ MOJANG
